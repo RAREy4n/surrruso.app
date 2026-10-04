@@ -132,7 +132,11 @@ export function Acompanhar() {
           <Aviso
             icone={<Clock size={22} />}
             titulo={dados.status === "encerrado" ? "Compartilhamento encerrado" : "O tempo do compartilhamento acabou"}
-            texto={`${nome} parou de compartilhar às ${hora(dados.updated_at)}. A localização foi apagada do servidor.`}
+            texto={
+              dados.status === "encerrado"
+                ? `${nome} parou de compartilhar às ${hora(dados.updated_at)}. A localização foi apagada do servidor.`
+                : `O prazo de compartilhamento encerrou às ${hora(dados.expires_at || dados.updated_at)}. A localização foi apagada do servidor.`
+            }
           />
         )}
 

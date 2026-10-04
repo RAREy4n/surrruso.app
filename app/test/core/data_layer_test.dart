@@ -83,6 +83,17 @@ void main() {
   group('ContactMessenger', () {
     test('mensagens contêm o link e a duração', () {
       expect(ContactMessenger.mensagemAcompanhamento('https://x/acompanhar#t=1', 30), contains('30 minutos'));
+      expect(
+        ContactMessenger.mensagemAcompanhamento(
+          'https://x/acompanhar#t=1',
+          30,
+          endereco: 'Rua XV de Novembro, 123 · Centro, Curitiba',
+        ),
+        allOf([
+          contains('30 minutos'),
+          contains('📍 Rua XV de Novembro, 123 · Centro, Curitiba'),
+        ]),
+      );
       expect(ContactMessenger.mensagemLocalizacaoAtual(-25.4, -49.2), contains('query=-25.4,-49.2'));
     });
   });

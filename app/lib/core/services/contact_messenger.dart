@@ -40,7 +40,18 @@ class ContactMessenger {
       'Preciso de ajuda. Minha localização agora:\n'
       'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
 
-  static String mensagemAcompanhamento(String link, int minutos) =>
-      'Preciso de ajuda. Estou compartilhando minha localização com você '
-      'pelos próximos $minutos minutos:\n$link';
+  static String mensagemAcompanhamento(
+    String link,
+    int minutos, {
+    String? endereco,
+  }) {
+    if (endereco != null && endereco.trim().isNotEmpty) {
+      return 'Preciso de ajuda. Estou perto de:\n'
+          '📍 $endereco\n\n'
+          'Estou compartilhando minha localização com você pelos próximos $minutos minutos:\n'
+          '$link';
+    }
+    return 'Preciso de ajuda. Estou compartilhando minha localização com você '
+        'pelos próximos $minutos minutos:\n$link';
+  }
 }
