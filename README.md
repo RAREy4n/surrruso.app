@@ -31,6 +31,36 @@ Legenda: ✅ funcionando · 🟡 parcial · ⬜ a fazer.
 4. Saída rápida e aviso de limites do app no primeiro uso.
 5. Testar "Escolher da agenda" em aparelho Android e acompanhar o `flutter_native_contact_picker`: ele aplica o Kotlin Gradle Plugin (KGP), que versões futuras do Flutter vão recusar no build.
 
+#### Procedimentos complementares de aperfeiçoamento:
+
+1. Otimizar a transmissão de dados e reduzir o uso do banco de dados, utilizando cálculos de área e movimentação. Essa seria uma das principais formas de melhorar o desempenho e a eficiência do aplicativo.
+
+2. Adicionar etapas que possam auxiliar no rastreamento da pessoa durante investigações, salvando uma trilha linear em SVG que registre por onde a pessoa passou e quando o deslocamento foi iniciado.
+
+3. Melhorar a funcionalidade de saída rápida, possibilitando integrá-la ao modo discreto para que ambas as funcionalidades possam ser utilizadas em conjunto.
+
+4. Permitir que a própria usuária personalize as cores do aplicativo. Caso o aplicativo seja expandido nacionalmente, é importante aumentar as possibilidades de personalização para evitar que ele seja facilmente reconhecido visualmente, indo além de simples templates para modificação de ícones.
+
+5. Possivelmente adicionar um modo de economia de bateria, considerando que essa funcionalidade poderá ser necessária em determinadas situações de uso.
+
+6. Adicionar um modo escuro (Dark Mode). Entretanto, é importante considerar que essa alteração pode impactar a segurança da usuária em determinadas situações, principalmente quando o aplicativo estiver sendo utilizado de forma discreta ou quando outra pessoa estiver observando a tela. Em algumas situações, o modo escuro pode dificultar a visualização da tela à distância.
+
+7. Adicionar um modo de emergência, no qual a usuária possa acionar uma sequência específica de botões, como pressionar o botão de desligar duas vezes, para ativar o modo de ligação para a polícia. Essa sequência e outras configurações relacionadas poderiam ser personalizáveis.
+
+8. Existe a possibilidade de expandir ainda mais o aplicativo. Uma das principais mudanças estaria relacionada à política e aos termos de uso, deixando explícito que as informações apresentadas pelo mapa podem estar incorretas. Isso também permitiria tornar a busca mais dinâmica por meio da integração com uma API, como a do Google Maps.
+
+9. Adicionar uma funcionalidade para salvar arquivos criptografados diretamente no celular da usuária, permitindo que esses arquivos sejam protegidos por uma senha definida pela própria usuária e, posteriormente, enviados para serviços externos, como o Google Drive. Dessa forma, seria possível reduzir o uso do banco de dados de maneira prática e funcional.
+
+10. Uma das principais ideias seria implementar um algoritmo de compressão de dados para otimizar a transferência de informações entre o banco de dados e o frontend. Se possível, o frontend poderia realizar a descompressão dos dados após recebê-los. Dessa maneira, seria possível reduzir tanto o volume de dados armazenados no banco quanto o consumo de dados móveis da cliente.
+
+11. Possivelmente, podemos permitir que o contato confiável da usuária possa baixar o arquivo do banco de dados, contendo o histórico de movimentações dela, para fins de investigação etc. Deixaríamos esse tipo de informação com uma forma dinâmica de acesso, já que não podemos prever a infraestrutura e o uso que será feito dela. Dessa forma, preveríamos o uso máximo possível para tal finalidade.
+
+12. Acrescentando ao (1), podemos implementar uma forma de saber dinamicamente quanto de bateria a usuária possui e qual é a qualidade da movimentação de dados. Sendo assim, utilizando o (10), poderíamos comprimir um JSON com esses tipos de dados e inseri-lo diretamente no banco. Porém, teríamos que definir que, caso a bateria esteja acima de 25% (como exemplo), poderíamos evitar a comunicação do celular com o servidor, fazendo com que o servidor presuma que a bateria está em um nível adequado e não precise realizar essa leitura. Também poderíamos enviar ao contato de segurança a informação sobre a bateria do celular caso ela esteja abaixo desse nível e, se estiver em um nível crítico, deixar essa situação visível como um aviso.
+
+Caso a bateria acabe enquanto a localização estiver sendo enviada, podemos presumir que isso ocorreu devido à falta de bateria e avisar o contato de segurança. Podemos também diminuir a frequência de transmissão dos dados, mas isso diminuiria a precisão e a coesão dos dados para o cliente. Além disso, podemos alterar o front-end ou desativar determinadas partes, quando possível, para economizar bateria.
+
+13. Se possível, fazer a distribuição do site do aplicativo usando um proxy, ou no seu uso em si, sendo um dos casos mais pequenos e raros que pode ajudar a usuaria.
+
 ## Fluxo do aplicativo (estado atual)
 
 ```mermaid
